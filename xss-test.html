@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>xss测试</title>
+</head>
+
+<body>
+  
+  <div id="app">
+    <p v-html="inputStr"></p>
+    <input type="text" v-model="inputStr" style="width: 300px;">
+  </div>
+  
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          inputStr: ""
+        };
+      },
+    }).mount('#app');
+  </script>
+
+  <!-- <script>alert(1)</script> -->
+  <!-- <h2>111</h2> -->
+  <!-- <a onclick="alert('攻击你')">连接</a> -->
+  <!-- <img src="xx" onerror="alert('这个也可以攻')"> -->
+  <!-- &lt;img src='123' onerror='alert(1111)&gt; -->
+  <!-- &lt;script&gt;alert(1)&lt;/script&gt; -->
+</body>
+</html>
